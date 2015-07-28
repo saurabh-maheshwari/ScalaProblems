@@ -13,5 +13,13 @@ class SolutionSpec extends FlatSpec with Matchers {
 	  assert(penultimateElement(List(1,2,3)) === 2)
 	  assert(penultimateElement(List('a','b','c')) == 'b')
   }
+  
+  it should "Find the Kth element of a list." in {
+    assert(nth(2, List(1, 1, 2, 3, 5, 8)) === 2)
+  }
+  
+  it should "Find the number of elements of a list." in  {
+    assert(lengthList(List(1, 1, 2, 3, 5, 8)) === 6)
+  }
 
 }
