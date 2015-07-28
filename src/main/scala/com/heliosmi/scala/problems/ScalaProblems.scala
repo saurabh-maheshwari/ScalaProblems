@@ -29,5 +29,10 @@ object ScalaProblems {
     }
     lengthRecursive(0, ls)
   }
+  
+  def reverse[A](ls: List[A]): List[A] = ls match {
+    case _ :: Nil => ls
+    case e :: tail => reverse(tail) :: e :: Nil   
+  }
 
 }
