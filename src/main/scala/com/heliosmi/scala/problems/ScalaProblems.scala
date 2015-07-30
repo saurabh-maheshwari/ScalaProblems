@@ -29,10 +29,19 @@ object ScalaProblems {
     }
     lengthRecursive(0, ls)
   }
-  
+
   def reverse[A](ls: List[A]): List[A] = ls match {
-    case _ :: Nil => ls
-    case e :: tail => reverse(tail) :: e :: Nil   
+    case Nil => ls
+    case e :: tail => reverse(tail) ::: List(e)
+  }
+
+  def isPalindrome[A](ls: List[A]): Boolean = {
+    ls == reverse(ls)
+  }
+
+  def flatten(ls: List[Any]): List[Any] = ls flatMap {
+    case ms: List[_] => flatten(ms)
+    case e => List(e)
   }
 
 }
