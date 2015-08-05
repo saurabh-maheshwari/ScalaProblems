@@ -23,17 +23,10 @@ object ScalaProblems {
   }
 
   def lengthList[A](ls: List[A]): Int = {
-    def lengthRecursive(acc: Int, currentList: List[A]): Int = currentList match {
-      case Nil => acc
-      case (_ :: tail) => lengthRecursive(acc + 1, tail)
-    }
-    lengthRecursive(0, ls)
+    ls.foldLeft(0){(c,_) => c+1}
   }
 
-  def reverse[A](ls: List[A]): List[A] = ls match {
-    case Nil => ls
-    case e :: tail => reverse(tail) ::: List(e)
-  }
+  def reverse[A](ls: List[A]): List[A] = ls.foldLeft(List[A]()){(h,r) => r::h}   
 
   def isPalindrome[A](ls: List[A]): Boolean = {
     ls == reverse(ls)
@@ -42,6 +35,11 @@ object ScalaProblems {
   def flatten(ls: List[Any]): List[Any] = ls flatMap {
     case ms: List[_] => flatten(ms)
     case e => List(e)
+  }
+
+  def compress[A](ls: List[A]): List[A] = ls.foldRight(List[A]()) { (h, r) =>
+    if (r.isEmpty || r.head != h) h :: r
+    else r
   }
 
 }
