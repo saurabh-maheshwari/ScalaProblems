@@ -23,10 +23,10 @@ object ScalaProblems {
   }
 
   def lengthList[A](ls: List[A]): Int = {
-    ls.foldLeft(0){(c,_) => c+1}
+    ls.foldLeft(0) { (c, _) => c + 1 }
   }
 
-  def reverse[A](ls: List[A]): List[A] = ls.foldLeft(List[A]()){(h,r) => r::h}   
+  def reverse[A](ls: List[A]): List[A] = ls.foldLeft(List[A]()) { (h, r) => r :: h }
 
   def isPalindrome[A](ls: List[A]): Boolean = {
     ls == reverse(ls)
@@ -40,6 +40,30 @@ object ScalaProblems {
   def compress[A](ls: List[A]): List[A] = ls.foldRight(List[A]()) { (h, r) =>
     if (r.isEmpty || r.head != h) h :: r
     else r
+  }
+
+  //Recursive
+  def pack[A](xs: List[A]): List[List[A]] = xs match {
+    case Nil => Nil
+    case x :: _ => val (hs, ts) = xs.span(x==); hs :: pack(ts)
+  }
+  
+  //Using fold
+  def pack2[A](xs: List[A]): List[List[A]] =
+  xs.foldRight(List[List[A]]()){
+    case (x, (ys@(y::_)) :: rs) if x == y => (x::ys) :: rs
+    case (x, ys) => List(x) :: ys
+  }
+  
+  def encode[A](ls: List[A])= {
+    pack2(ls).map(x => (x.length,x.head))
+  }
+  
+  def encodeModified[A](ls: List[A])= {
+    pack2(ls).map(x => 
+      if (x.length > 0) x.length,x.head
+      else x.head
+      )
   }
 
 }

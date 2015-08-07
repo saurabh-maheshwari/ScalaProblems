@@ -37,7 +37,21 @@ class SolutionSpec extends FlatSpec with Matchers {
   it should " Eliminate consecutive duplicates of list elements." in {
     assert(
       compress(
-        List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)) ===
-        List('a, 'b, 'c, 'a, 'd, 'e))
+        List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e))
+        === List('a, 'b, 'c, 'a, 'd, 'e))
+  }
+
+  it should "Pack consecutive duplicates of list elements into sublists." in {
+    //Using recursive and fold
+    assert(pack(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e))
+      === List(List('a, 'a, 'a, 'a), List('b), List('c, 'c), List('a, 'a), List('d), List('e, 'e, 'e, 'e)))
+      
+      assert(pack2(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e))
+      === List(List('a, 'a, 'a, 'a), List('b), List('c, 'c), List('a, 'a), List('d), List('e, 'e, 'e, 'e)))
+  }
+  
+  it should "Run-length encoding of a list." in{
+    assert(encode(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)) 
+        === List((4,'a), (1,'b), (2,'c), (2,'a), (1,'d), (4,'e)))
   }
 }
