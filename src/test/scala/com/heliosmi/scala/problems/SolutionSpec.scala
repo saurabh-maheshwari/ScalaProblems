@@ -54,4 +54,15 @@ class SolutionSpec extends FlatSpec with Matchers {
     assert(encode(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)) 
         === List((4,'a), (1,'b), (2,'c), (2,'a), (1,'d), (4,'e)))
   }
+  
+  it should " Modified run-length encoding." in{
+    assert(encodeModified(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)) 
+        === 
+      List((4,'a), 'b, (2,'c), (2,'a), 'd, (4,'e)))
+  }
+  
+  it should "Decode a run-length encoded list." in {
+    assert(decode(List((4, 'a), (1, 'b), (2, 'c), (2, 'a), (1, 'd), (4, 'e))) 
+        === List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e) )
+  }
 }
