@@ -66,5 +66,9 @@ object ScalaProblems {
 /*  def encodeModified2[A](ls: List[A]): List[Either[A, (Int, A)]] =
     encode(ls) map { t => if (t._1 == 1) Left(t._2) else Right(t) }
 */
+ 
+ def decode[A](ls: List[(Int, A)]): List[A] = ls flatMap { e => List.fill(e._1)(e._2) }
+ 
+ 
 
 }
