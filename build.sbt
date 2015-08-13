@@ -10,6 +10,8 @@ libraryDependencies += "org.scalatest" %% "scalatest" % "2.2.4" % "test"
 // Uncomment to use Akka
 //libraryDependencies += "com.typesafe.akka" %% "akka-actor" % "2.3.11"
 
+libraryDependencies += "org.apache.spark" % "spark-mllib_2.11" % "1.4.1"
+
 EclipseKeys.withSource := true
 
 fork in run := true
