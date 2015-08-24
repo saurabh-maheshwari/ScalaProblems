@@ -47,28 +47,40 @@ object ScalaProblems {
     case Nil => Nil
     case x :: _ => val (hs, ts) = xs.span(x==); hs :: pack(ts)
   }
-  
+
   //Using fold
   def pack2[A](xs: List[A]): List[List[A]] =
-  xs.foldRight(List[List[A]]()){
-    case (x, (ys@(y::_)) :: rs) if x == y => (x::ys) :: rs
-    case (x, ys) => List(x) :: ys
+    xs.foldRight(List[List[A]]()) {
+      case (x, (ys @ (y :: _)) :: rs) if x == y => (x :: ys) :: rs
+      case (x, ys) => List(x) :: ys
+    }
+
+  def encode[A](ls: List[A]) = {
+    pack2(ls).map(x => (x.length, x.head))
   }
-  
-  def encode[A](ls: List[A])= {
-    pack2(ls).map(x => (x.length,x.head))
-  }
-  
- def encodeModified[A](ls: List[A]): List[Any] =
+
+  def encodeModified[A](ls: List[A]): List[Any] =
     encode(ls) map { t => if (t._1 == 1) t._2 else t }
- 
- // Just for fun, here's a more typesafe version.
-/*  def encodeModified2[A](ls: List[A]): List[Either[A, (Int, A)]] =
+
+  // Just for fun, here's a more typesafe version.
+  /*  def encodeModified2[A](ls: List[A]): List[Either[A, (Int, A)]] =
     encode(ls) map { t => if (t._1 == 1) Left(t._2) else Right(t) }
 */
- 
- def decode[A](ls: List[(Int, A)]): List[A] = ls flatMap { e => List.fill(e._1)(e._2) }
- 
- 
+
+  def decode[A](ls: List[(Int, A)]): List[A] = ls flatMap { e => List.fill(e._1)(e._2) }
+
+  def encodeDirect[A](ls: List[A]): List[(Int, A)] = {
+    if (ls.isEmpty) Nil
+    else {
+      val (packed, next) = ls span { ls.head == _ }
+      (packed.length, packed.head) :: encodeDirect(next)
+    }
+  }
+
+  def duplicate[A](ls: List[A]): List[A] = ls flatMap { e => List(e, e) }
+
+  def duplicateN[A](n: Int, ls: List[A]): List[A] = ls flatMap { List.fill(n)(_) }
+
+  def drop[A](n: Int, ls: List[A]): List[A] = ls.zipWithIndex filter { e => (e._2 + 1) % n != 0 } map { _._1 }
 
 }
