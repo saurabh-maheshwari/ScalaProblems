@@ -82,5 +82,7 @@ object ScalaProblems {
   def duplicateN[A](n: Int, ls: List[A]): List[A] = ls flatMap { List.fill(n)(_) }
 
   def drop[A](n: Int, ls: List[A]): List[A] = ls.zipWithIndex filter { e => (e._2 + 1) % n != 0 } map { _._1 }
+  
+  def split[A] (n:Int, ls:List[A]): (List[A],List[A]) = ls.splitAt(n)
 
 }
