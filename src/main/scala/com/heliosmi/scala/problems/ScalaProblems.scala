@@ -84,5 +84,7 @@ object ScalaProblems {
   def drop[A](n: Int, ls: List[A]): List[A] = ls.zipWithIndex filter { e => (e._2 + 1) % n != 0 } map { _._1 }
   
   def split[A] (n:Int, ls:List[A]): (List[A],List[A]) = ls.splitAt(n)
+  
+  def slice[A](n:Int, m:Int, ls:List[A]): List[A] = ls.zipWithIndex filter { e=> (e._2 >=n) && (e._2 < m )} map { _._1}
 
 }
