@@ -85,8 +85,12 @@ class SolutionSpec extends FlatSpec with Matchers {
   it should "Split a list into two parts." in {
     assert(split(3, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)) === (List('a, 'b, 'c), List('d, 'e, 'f, 'g, 'h, 'i, 'j, 'k)))
   }
+
+  it should "Extract a slice from a list." in {
+    assert(slice(3, 7, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)) === List('d, 'e, 'f, 'g))
+  }
   
-  it should " Extract a slice from a list." in {
-    assert(slice(3, 7, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)) ===  List('d, 'e, 'f, 'g) )
+  it should "Rotate a list N places to the left." in {
+    
   }
 }
