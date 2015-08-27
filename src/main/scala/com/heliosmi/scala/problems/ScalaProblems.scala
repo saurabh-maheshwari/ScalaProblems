@@ -88,12 +88,13 @@ object ScalaProblems {
   def slice[A](n: Int, m: Int, ls: List[A]): List[A] = ls.zipWithIndex filter { e => (e._2 >= n) && (e._2 < m) } map { _._1 }
 
   def rotate[A](n: Int, ls: List[A]) = {
-    def moduloBoundary(m:Int):Int = if (m < 0) 
-    			moduloBoundary(m + ls.length)
-    else m
+    if (ls.isEmpty) Nil
+
+    def moduloBoundary(m: Int): Int =
+      if (m < 0) moduloBoundary(m + ls.length)
+      else m % ls.length
     
-    val boundary = if (n < 0) moduloBoundary
-    				else n
+    val boundary = moduloBoundary(n)
     (ls drop boundary) ::: (ls take boundary)
   }
 
