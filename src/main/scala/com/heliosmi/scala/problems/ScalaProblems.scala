@@ -93,9 +93,22 @@ object ScalaProblems {
     def moduloBoundary(m: Int): Int =
       if (m < 0) moduloBoundary(m + ls.length)
       else m % ls.length
-    
+
     val boundary = moduloBoundary(n)
     (ls drop boundary) ::: (ls take boundary)
   }
+
+  def removeAt[A](n: Int, ls: List[A]) = ls.splitAt(n) match {
+    case (Nil, _) if n < 0 => throw new NoSuchElementException
+    case (pre, e :: post) => (pre ::: post, e)
+    case (pre, Nil) => throw new NoSuchElementException
+  }
+
+  def insertAt[A](elem: A, n: Int, ls: List[A]): List[A] = ls.splitAt(n) match {
+    case (pre, post) => pre ::: List(elem) ::: post
+  }
+
+  //def range(n:Int, m:Int) = n until (m+1) 
+  def range(n: Int, m: Int) = List.range(n, m + 1)
 
 }

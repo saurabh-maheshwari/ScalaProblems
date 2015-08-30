@@ -94,7 +94,20 @@ class SolutionSpec extends FlatSpec with Matchers {
     assert(rotate(3, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)) === List('d, 'e, 'f, 'g, 'h, 'i, 'j, 'k, 'a, 'b, 'c))
     assert(rotate(-2, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)) === List('j, 'k, 'a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i))
     assert(rotate(-13, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)) === List('j, 'k, 'a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i))
-   // assert(rotate(-2, List()) === List())
+    // assert(rotate(-2, List()) === List())
+  }
+
+  it should "Remove the Kth element from a list." in {
+    assert(removeAt(1, List('a, 'b, 'c, 'd)) === (List('a, 'c, 'd), 'b))
 
   }
+
+  it should "Insert an element at a given position into a list." in {
+    assert(insertAt('new, 1, List('a, 'b, 'c, 'd)) === List('a, 'new, 'b, 'c, 'd))
+  }
+
+  it should "Create a list containing all integers within a given range." in {
+    assert(range(4, 9) === List(4, 5, 6, 7, 8, 9))
+  }
+
 }
