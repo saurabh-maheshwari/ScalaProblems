@@ -1,6 +1,7 @@
 package com.heliosmi.scala.problems
 
 import java.util.NoSuchElementException
+import scala.util.Random
 
 object ScalaProblems {
 
@@ -110,5 +111,13 @@ object ScalaProblems {
 
   //def range(n:Int, m:Int) = n until (m+1) 
   def range(n: Int, m: Int) = List.range(n, m + 1)
+  
+  def randomSelect[A](n:Int, ls:List[A]):List[A] = {
+    (new Random).shuffle(ls).take(n)
+  }
+  
+  def lotto(n:Int, max:Int):List[Int] = randomSelect(n, List.range(1, max))
+  
+  def randomPermute[A](ls:List[A]):List[A] = (new Random).shuffle(ls)
 
 }

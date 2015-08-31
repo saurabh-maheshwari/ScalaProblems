@@ -109,5 +109,17 @@ class SolutionSpec extends FlatSpec with Matchers {
   it should "Create a list containing all integers within a given range." in {
     assert(range(4, 9) === List(4, 5, 6, 7, 8, 9))
   }
+  
+  it should "Extract a given number of randomly selected elements from a list." in {
+    assert(randomSelect(3, List('a, 'b, 'c, 'd, 'f, 'g, 'h)).size === 3)
+  }
+  
+  it should "Draw N different random numbers from the set 1..M." in {
+    assert(lotto(6,49).size === 6)
+  }
+  
+  it should "Generate a random permutation of the elements of a list." in {
+    assert(randomPermute(List('a, 'b, 'c, 'd, 'e, 'f)).size === 6)
+  }
 
 }
