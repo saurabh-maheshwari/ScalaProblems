@@ -125,4 +125,8 @@ class SolutionSpec extends FlatSpec with Matchers {
   it should "Generate the combinations of K distinct objects chosen from the N elements of a list." in {
     assert(combinations(3, List('a, 'b, 'c, 'd, 'e, 'f)).size === 20)
   }
+
+  
+  it should "Group the elements of a set into disjoint subsets." in {    
+  }
 }
