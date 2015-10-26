@@ -109,28 +109,29 @@ class SolutionSpec extends FlatSpec with Matchers {
   it should "Create a list containing all integers within a given range." in {
     assert(range(4, 9) === List(4, 5, 6, 7, 8, 9))
   }
-  
+
   it should "Extract a given number of randomly selected elements from a list." in {
     assert(randomSelect(3, List('a, 'b, 'c, 'd, 'f, 'g, 'h)).size === 3)
   }
-  
+
   it should "Draw N different random numbers from the set 1..M." in {
-    assert(lotto(6,49).size === 6)
+    assert(lotto(6, 49).size === 6)
   }
-  
+
   it should "Generate a random permutation of the elements of a list." in {
     assert(randomPermute(List('a, 'b, 'c, 'd, 'e, 'f)).size === 6)
   }
-  
+
   it should "Generate the combinations of K distinct objects chosen from the N elements of a list." in {
     assert(combinations(3, List('a, 'b, 'c, 'd, 'e, 'f)).size === 20)
   }
 
-
   it should "Group the elements of a set into disjoint subsets." in {
     //Problem statement not clear
   }
-  
+
   it should "Sorting a list of lists according to length of sublists" in {
+    assert(lsort(List(List('a, 'b, 'c), List('d, 'e), List('f, 'g, 'h), List('d, 'e), List('i, 'j, 'k, 'l), List('m, 'n), List('o))) 
+       === List(List('o), List('d, 'e), List('d, 'e), List('m, 'n), List('a, 'b, 'c), List('f, 'g, 'h), List('i, 'j, 'k, 'l)))
   }
 }

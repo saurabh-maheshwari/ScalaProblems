@@ -121,5 +121,7 @@ object ScalaProblems {
   def randomPermute[A](ls: List[A]): List[A] = (new Random).shuffle(ls)
 
   def combinations[A](n: Int, ls: List[A]): List[List[A]] = ls.combinations(n).toList
+  
+  def lsort[A](ls:List[List[A]]):List[List[A]] = ls.sortWith(_.length < _.length)
 
 }
