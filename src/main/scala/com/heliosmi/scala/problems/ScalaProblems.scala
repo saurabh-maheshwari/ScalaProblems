@@ -123,5 +123,14 @@ object ScalaProblems {
   def combinations[A](n: Int, ls: List[A]): List[List[A]] = ls.combinations(n).toList
   
   def lsort[A](ls:List[List[A]]):List[List[A]] = ls.sortWith(_.length < _.length)
+  
+  /*def gcd(a:Int, b:Int):Int = {
+    if (b == 0) a
+    else gcd (b,a%b)
+  }*/
+  def gcd(a:Int, b:Int):Int = b match {
+    case(0) => a
+    case(_) => gcd(b,a%b)
+  }
 
 }

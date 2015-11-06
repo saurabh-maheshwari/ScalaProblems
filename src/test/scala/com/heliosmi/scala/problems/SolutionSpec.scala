@@ -134,4 +134,8 @@ class SolutionSpec extends FlatSpec with Matchers {
     assert(lsort(List(List('a, 'b, 'c), List('d, 'e), List('f, 'g, 'h), List('d, 'e), List('i, 'j, 'k, 'l), List('m, 'n), List('o))) 
        === List(List('o), List('d, 'e), List('d, 'e), List('m, 'n), List('a, 'b, 'c), List('f, 'g, 'h), List('i, 'j, 'k, 'l)))
   }
+   it should "Determine the greatest common divisor of two positive integer numbers." in {
+     assert(gcd(72,63) === 9)
+   }
+  
 }
